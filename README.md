@@ -4,11 +4,13 @@ Rename [Joplin](https://joplinapp.org/) note titles in bulk by adding a prefix, 
 
 ## Usage
 This plugin works by altering the titles of the currently-selected notes. Select some notes in the notes list and two buttons will appear in the notes list toolbar: **Prefix / Suffix** and **Search and Replace**.
+
 ![Select notes to alter their titles](./assets/note-rename-toolbar-buttons.png)
 
 There are similar options in the **Tools** menu and the right-click context menu for the selected notes. Click the button or menu item for the operation you'd like to perform.
 
 ### Prefix / Suffix
+
 ![Popup window for Prefix/Suffix command](./assets/note-rename-alter.png)
 
 This command adds a prefix or suffix to the selected notes. First, select a mode option:
@@ -20,6 +22,7 @@ Type the text that you would like to add into the **Text** box.
 To perform the operation, click **OK**. If you've changed your mind, click **Cancel**.
 
 ### Search and Replace
+
 ![Popup window for Search and Replace command](./assets/note-rename-replace.png)
 
 This command will search the selected notes for the text in the **Search** input box. It will then replace that text with the value of the **Replace** input box.
