@@ -5,7 +5,7 @@
 	"version": "1.0.0",
 	"name": "Note Rename",
 	"description": "A utility for changing the name of many notes at once via prefixes, suffixes, or find and replace.",
-	"author": "Jen Garcia &lt;jen@haverstack.com&gt;",
+	"author": "cuibonobo",
 	"homepage_url": "https://github.com/cuibonobo/joplin-plugin-note-rename#readme",
 	"repository_url": "https://github.com/cuibonobo/joplin-plugin-note-rename",
 	"keywords": ["joplin", "plugin", "rename"],
