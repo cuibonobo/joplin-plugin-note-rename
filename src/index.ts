@@ -19,6 +19,7 @@ joplin.plugins.register({
 
 		const searchAndReplaceNoteNames = async (search: string, replace: string) => {
 			await renameSelected((noteName: string) => {
+				// Escape regex characters so they don't affect the search
 				const escapedSearch = search.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 				return noteName.replace(new RegExp(escapedSearch, "g"), replace);
 			});
@@ -28,13 +29,14 @@ joplin.plugins.register({
 			const noteIds = await joplin.workspace.selectedNoteIds();
 			const notes: any[] = [];
 			for (let noteId of noteIds) {
-				notes.push(await joplin.data.get(["notes", noteId]))
+				notes.push(await joplin.data.get(["notes", noteId], {fields: ['id', 'title', 'user_updated_time']}));
 			}
-			// FIXME: Reversing order of notes to preserve original modified order,
-			// but we should look at the actual dates of the notes instead
-			notes.reverse();
 			for (let note of notes) {
-				await joplin.data.put(["notes", note.id], null, {title: renameFn(note.title)})
+				// User-updated time is kept the same so that note order is not affected
+				await joplin.data.put(["notes", note.id], null, {
+					title: renameFn(note.title),
+					user_updated_time: note.user_updated_time
+				});
 			}
 		};
 
