@@ -1,0 +1,24 @@
+---
+name: "OSV Scanner"
+
+on:
+  schedule:
+  - cron: '0 0 * * 0'
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+
+  check:
+    name: Check with OSV Scanner
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v3
+    - name: Set up Go
+      uses: actions/setup-go@v4
+    - name: Install OSV Scanner
+      run: go install github.com/google/osv-scanner/cmd/osv-scanner@v1
+    - name: OSV Scanner
+      run: 'PATH="${PATH}:$(go env GOPATH)/bin" osv-scanner -r .'
